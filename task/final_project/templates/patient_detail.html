@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Patient: {{ patient.name }}</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Age:</strong> {{ patient.age }}</p>
+                <p><strong>Gender:</strong> {{ patient.gender }}</p>
+                <p><strong>Contact:</strong> {{ patient.contact }}</p>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-info text-white">
+                <h4 class="mb-0">Medical History</h4>
+            </div>
+            <div class="card-body">
+                {% for h in histories %}
+                    <div class="mb-3">
+                        <p><strong>Diagnosis:</strong> {{ h.diagnosis }}</p>
+                        <p><strong>Allergies:</strong> {{ h.allergies }}</p>
+                        <p><strong>Surgeries:</strong> {{ h.surgeries }}</p>
+                        <hr>
+                    </div>
+                {% empty %}
+                    <p>No medical history available.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">Treatment Plans</h4>
+            </div>
+            <div class="card-body">
+                {% for t in treatments %}
+                    <div class="mb-3">
+                        <p>{{ t.treatment_description }}</p>
+                        <p><strong>Prescribed by:</strong> {{ t.prescribed_by }}</p>
+                        <p><strong>Date:</strong> {{ t.date }}</p>
+                        <hr>
+                    </div>
+                {% empty %}
+                    <p>No treatment plans available.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <a href="{% url 'patient_list' %}" class="btn btn-secondary">Back to Patient List</a>
+
+    </div>
+</body>
+</html>

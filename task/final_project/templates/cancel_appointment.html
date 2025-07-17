@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cancel Appointment</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger shadow-lg">
+                <div class="card-header bg-danger text-white text-center">
+                    <h4>⚠️ Cancel Appointment</h4>
+                </div>
+                <div class="card-body text-center">
+                    <div class="alert alert-warning" role="alert">
+                        Are you sure you want to cancel the appointment for
+                        <strong>{{ appointment.patient_name }}</strong> on
+                        <strong>{{ appointment.appointment_date }}</strong> at
+                        <strong>{{ appointment.appointment_time }}</strong>?
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Yes, Cancel</button>
+                        <a href="{% url 'home' %}" class="btn btn-secondary ms-2">No, Go Back</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

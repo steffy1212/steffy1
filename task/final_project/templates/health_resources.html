@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Education Resources</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="mb-4 text-primary text-center">📚 Health Education Resources</h1>
+
+        {% for res in resources %}
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h4 class="card-title text-success">{{ res.title }}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ res.category }}</h6>
+                    <p class="card-text">{{ res.content }}</p>
+                    <small class="text-muted">📅 Published on: {{ res.published_on|date:"F d, Y" }}</small>
+                </div>
+            </div>
+        {% empty %}
+            <div class="alert alert-warning text-center">
+                No health education resources available.
+            </div>
+        {% endfor %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

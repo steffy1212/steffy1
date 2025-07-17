@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Appointment List</title>
+    <style>
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">All Appointments</h2>
+    <div style="text-align: center;">
+        <a href="{% url 'appointment_create' %}">Create New Appointment</a>
+    </div>
+    <table>
+        <tr>
+            <th>Patient</th>
+            <th>Contact</th>
+            <th>Department</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Reason</th>
+            <th>Actions</th>
+        </tr>
+        {% for appt in appointments %}
+        <tr>
+            <td>{{ appt.patient_name }}</td>
+            <td>{{ appt.contact_number }}</td>
+            <td>{{ appt.department.name }}</td>
+            <td>{{ appt.appointment_date }}</td>
+            <td>{{ appt.appointment_time }}</td>
+            <td>{{ appt.reason }}</td>
+            <td><a href="{% url 'appointment_delete' appt.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

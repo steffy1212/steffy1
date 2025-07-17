@@ -1,0 +1,14 @@
+[
+    {
+        "patient_name": "suganthi",
+        "amount": "200",
+        "date": "2025-05-23",
+        "status": "Paid"
+    },
+    {
+        "patient_name": "steffy",
+        "amount": "230",
+        "date": "2025-05-16",
+        "status": "Pending"
+    }
+]
